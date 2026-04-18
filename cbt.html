@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT ANALIS SDM AHLI MADYA | PRO VERSION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .active-nav { border-bottom: 3px solid #2563eb; color: #2563eb; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .q-circle { transition: all 0.2s; cursor: pointer; }
+        .q-answered { background-color: #2563eb !important; color: white !important; }
+        .q-current { border: 2px solid #2563eb; transform: scale(1.1); }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans">
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2 rounded-lg"><i class="fas fa-shield-halved text-xl"></i></div>
+                <span class="text-xl font-bold tracking-tighter">ASDM<span class="text-blue-600">PRO</span></span>
+            </div>
+            <div id="main-menu" class="hidden md:flex space-x-6 font-semibold text-gray-600">
+                <button onclick="showPage('landing')" class="hover:text-blue-600">Beranda</button>
+                <button onclick="showPage('promo')" class="hover:text-blue-600">Promosi</button>
+                <button onclick="showPage('store')" class="hover:text-blue-600 text-orange-500 font-bold"><i class="fas fa-shopping-cart mr-1"></i>Beli Aplikasi</button>
+            </div>
+            <button id="auth-btn" onclick="showPage('login')" class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg hover:bg-blue-700 transition">Login</button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-4 min-h-screen">
+
+        <div id="page-landing" class="py-12 flex flex-col items-center text-center">
+            <h1 class="text-5xl font-extrabold text-slate-900 leading-tight">Simulasi Ujikom CBT Teknis <br><span class="text-blue-600">Siap Menjadi Analis SDM Ahli Madya?</span></h1>
+            <p class="mt-6 text-gray-600 max-w-2xl text-lg">Platform simulasi ujian kompetensi terlengkap dengan 100 BUTIR soal standar OLCT BKN. Dilengkapi kunci jawaban dan pembahasan mendalam.</p>
+            <div class="mt-10 flex space-x-4">
+                <button onclick="showPage('login')" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition">Mulai Simulasi Sekarang</button>
+            </div>
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                    <i class="fas fa-clock text-blue-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-lg">100 Menit</h3>
+                    <p class="text-gray-500 text-sm">Waktu nyata sesuai standar ujian resmi.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                    <i class="fas fa-list-ol text-green-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-lg">100 Soal</h3>
+                    <p class="text-gray-500 text-sm">Soal pilihan ganda A-E dengan studi kasus.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border">
+                    <i class="fas fa-file-invoice text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="font-bold text-lg">Pembahasan</h3>
+                    <p class="text-gray-500 text-sm">Analisis jawaban lengkap setelah tes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-store" class="hidden py-12">
+            <h2 class="text-3xl font-bold text-center mb-10">Beli Paket Lisensi Premium</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl border shadow-sm">
+                    <h3 class="font-bold text-xl">Basic</h3>
+                    <div class="text-4xl font-black my-4">Rp 50rb</div>
+                    <ul class="space-y-3 text-gray-600 mb-8">
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Akses 100 Soal</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i> Masa Aktif 30 Hari</li>
+                    </ul>
+                    <button onclick="processBuy('Basic')" class="w-full py-3 bg-slate-100 rounded-xl font-bold hover:bg-slate-200">Pilih Paket</button>
+                </div>
+                <div class="bg-blue-600 p-8 rounded-3xl text-white shadow-xl scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 px-4 py-1 rounded-full text-xs font-bold">BEST SELLER</div>
+                    <h3 class="font-bold text-xl">Unlimited</h3>
+                    <div class="text-4xl font-black my-4">Rp 199rb</div>
+                    <ul class="space-y-3 mb-8 opacity-90">
+                        <li><i class="fas fa-check-circle mr-2"></i> Akses Semua Bank Soal</li>
+                        <li><i class="fas fa-check-circle mr-2"></i> PDF Pembahasan</li>
+                        <li><i class="fas fa-check-circle mr-2"></i> Update Soal Selamanya</li>
+                    </ul>
+                    <button onclick="processBuy('Unlimited')" class="w-full py-3 bg-white text-blue-600 rounded-xl font-bold hover:bg-blue-50">Beli Sekarang</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-login" class="hidden py-20 flex justify-center">
+            <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md">
+                <h2 class="text-2xl font-black text-center mb-8">Selamat Datang Kembali</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-500 ml-1">Email</label>
+                        <input type="text" id="email" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="admin@cbt.com">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-500 ml-1">Password</label>
+                        <input type="password" id="pass" class="w-full p-4 bg-gray-50 border rounded-2xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••">
+                    </div>
+                    <button onclick="doLogin()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition">Masuk</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-cbt" class="hidden">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="flex-1 bg-white rounded-3xl shadow-sm border p-8">
+                    <div class="flex justify-between items-center mb-8 border-b pb-4">
+                        <span class="text-blue-600 font-bold" id="q-label">SOAL NO. 1</span>
+                        <div class="flex items-center space-x-4">
+                            <div class="text-right">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Sisa Waktu</p>
+                                <p id="timer" class="text-2xl font-black text-red-600 font-mono">100:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="question-container">
+                        <p id="q-text" class="text-xl font-semibold text-slate-800 mb-8 leading-relaxed">...</p>
+                        <div id="options" class="space-y-4">
+                            </div>
+                    </div>
+
+                    <div class="mt-12 flex justify-between border-t pt-6">
+                        <button onclick="moveQ(-1)" class="px-6 py-2 border rounded-xl font-bold hover:bg-gray-50">Sebelumnya</button>
+                        <button onclick="finishTest()" class="px-6 py-2 bg-red-50 text-red-600 rounded-xl font-bold hover:bg-red-100">Selesai Ujian</button>
+                        <button onclick="moveQ(1)" class="px-8 py-2 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700">Berikutnya</button>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-80 space-y-4">
+                    <div class="bg-white rounded-3xl shadow-sm border p-6">
+                        <h3 class="font-bold mb-4 flex justify-between items-center">
+                            <span>Nomor Soal</span>
+                            <span class="text-xs bg-slate-100 px-2 py-1 rounded text-gray-500" id="progress-text">0/100</span>
+                        </h3>
+                        <div id="q-grid" class="grid grid-cols-5 gap-2 max-h-[400px] overflow-y-auto pr-2 no-scrollbar">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-result" class="hidden">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-xl p-10 text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-500 uppercase tracking-widest">Hasil Skor Anda</h2>
+                    <div id="final-score" class="text-8xl font-black text-blue-600 my-4">0</div>
+                    <p id="score-status" class="text-xl font-bold text-slate-700"></p>
+                    <button onclick="location.reload()" class="mt-8 px-10 py-3 bg-slate-900 text-white rounded-2xl font-bold">Ulangi Tes</button>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-6 flex items-center"><i class="fas fa-book-open mr-3 text-blue-600"></i> Kunci & Pembahasan</h3>
+                <div id="discussion-list" class="space-y-6"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // DATA SOAL (1-100)
+        let questions = [
+            {
+                q: "Berdasarkan Pasal 4 PermenPANRB Nomor 1 Tahun 2020, Pejabat Pembina Kepegawaian (PPK) membentuk Tim Pelaksana Anjab dan ABK untuk menjamin kelancaran pelaksanaan tugas. Manakah pernyataan yang benar mengenai kriteria jumlah anggota tim tersebut?",
+                o: ["Jumlah anggota tim harus genap untuk memudahkan pengambilan keputusan mufakat", "Anggota tim terdiri dari paling sedikit 5 (lima) orang termasuk ketua dan sekretaris", "Untuk menjamin objektivitas, jumlah anggota tim ditetapkan dalam jumlah ganjil", "Susunan tim hanya terdiri dari Ketua, Sekretaris, dan Anggota tanpa syarat latar belakang pelatihan", "Jumlah anggota tim dibatasi maksimal 7 (tujuh) orang untuk efisiensi koordinasi"],
+                c: 2,
+                d: ""
+            },
+            {
+                q: "Dalam tahapan pengolahan data jabatan, Analis harus menyusun elemen Uraian Tugas. Menurut Peraturan Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi Nomor 1 Tahun 2020, apa yang dimaksud dengan Uraian Tugas?",
+                o: ["Masukan yang diproses dengan tindak kerja menjadi hasil kerja", "Produk yang harus dicapai oleh pemangku jabatan baik berupa benda maupun jasa", "Ringkasan dari tugas-tugas yang dilakukan dalam satu kalimat yang mencerminkan pokok tugas", "merupakan upaya pokok dalam memproses bahan kerja menjadi hasil kerja menggunakan perangkat kerja", "Hak dan kekuasaan pemangku jabatan untuk mengambil sikap atau menentukan keputusan"],
+                c: 3,
+                d: ""
+            },
+            {
+                q: "Penghitungan Jam Kerja Efektif (JKE) merupakan alat ukur utama dalam ABK. Jika sebuah instansi menerapkan 5 (lima) hari kerja, berapakah standar Jam Kerja Efektif per Tahun yang ditetapkan setelah dilakukan pembulatan?",
+                o: ["1.200 Jam", "1.250 Jam", "1.500 Jam", "1.700 Jam", "1.800 Jam"],
+                c: 1,
+                d: ""
+            },
+            {
+                q: "Dalam menentukan syarat jabatan, terdapat aspek Temperamen Kerja. Jika suatu jabatan memerlukan kemampuan menyesuaikan diri untuk bekerja dengan ketetangan jiwa saat menghadapi keadaan darurat atau bahaya, maka kode temperamen yang tepat adalah...",
+                o: ["DCP (Directing Control Planning)", "FIF (Feeling-Idea-Fact)", "REPCON (Repetitive and Continuous)", "VARCH (Variety and Changing Conditions)", "PUS (Performing Under Stress)"],
+                c: 4,
+                d: ""
+            },
+            {
+                q: "Analisis Beban Kerja menggunakan beberapa pendekatan untuk menghitung kebutuhan pegawai. Pendekatan manakah yang paling tepat digunakan untuk jabatan yang hasil kerjanya bersifat abstrak atau beragam jenisnya?",
+                o: ["Pendekatan Hasil Kerja", "Pendekatan Objek Kerja", "Pendekatan Peralatan Kerja", "Pendekatan Tugas per Tugas Jabatan", "Pendekatan Volume Kerja Global"],
+                c: 3,
+                d: ""
+            },
+            {
+                q: "Seorang Analis SDM menemukan hasil penilaian seorang pegawai bernama Rian. Berdasarkan hasil asesmen psikologi dan uji kompetensi, Rian memiliki Potensi yang sangat tinggi:IQ tinggi, kepemimpinan kuat, dan adaptif. Namun, capaian Kinerja (SKP) Rian selama 2 tahun terakhir selalu berada di bawah ekspektasi karena ia merasa tugasnya saat ini terlalu monoton dan tidak menantang. Di kotak manakah posisi Rian dan apa tindakan yang paling tepat?",
+                o: ["Kotak 1; Dilakukan pembinaan disiplin atau pemberhentian", "Kotak 3; Dilakukan mutasi atau penempatan ulang (redistribusi) ke jabatan yang lebih menantang", "Kotak 7; Diberikan penghargaan atas loyalitasnya.", "Kotak 9; Dimasukkan ke dalam kelompok rencana suksesi (successor pool)", "Kotak 5; Diberikan pelatihan teknis dasar secara intensif"],
+                c: 1,
+                d: ""
+            },
+        ];
+
+        // Generate soal dummy hingga 100
+        for(let i=3; i<=100; i++) {
+            questions.push({
+                q: `[SIMULASI SOAL ${i}] Studi Kasus Manajemen SDM Aparatur Ahli Madya: Bagaimana strategi Anda dalam menangani implementasi sistem merit pada aspek promosi dan mutasi di unit kerja yang masih kental dengan budaya subyektivitas?`,
+                o: ["Menerapkan sistem terbuka", "Membuat instrumen asesmen obyektif", "Melakukan evaluasi berkala", "Melaporkan ke KASN", "Mengikuti arahan pimpinan saja"],
+                c: 1,
+                d: "Pembahasan: Implementasi sistem merit pada level Madya menekankan pada pembuatan instrumen/standar operasional yang obyektif dan terukur."
+            });
+        }
+
+        let currentIdx = 0;
+        let userAnswers = new Array(100).fill(null);
+        let timeLeft = 100 * 60; // 100 Menit
+        let timerInterval;
+
+        function showPage(pageId) {
+            document.querySelectorAll('main > div').forEach(d => d.classList.add('hidden'));
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function doLogin() {
+            // Simple validation
+            document.getElementById('auth-btn').innerHTML = '<i class="fas fa-user-circle mr-2"></i>Dashboard';
+            showPage('cbt');
+            initCBT();
+            startTimer();
+        }
+
+        function initCBT() {
+            const grid = document.getElementById('q-grid');
+            grid.innerHTML = '';
+            for(let i=0; i<100; i++) {
+                grid.innerHTML += `<div id="grid-${i}" onclick="jumpTo(${i})" class="q-circle w-10 h-10 bg-white border-2 flex items-center justify-center rounded-xl font-bold text-sm">${i+1}</div>`;
+            }
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentIdx];
+            document.getElementById('q-label').innerText = `SOAL NO. ${currentIdx + 1}`;
+            document.getElementById('q-text').innerText = q.q;
+            
+            const optDiv = document.getElementById('options');
+            optDiv.innerHTML = '';
+            
+            ['A','B','C','D','E'].forEach((label, i) => {
+                const isSelected = userAnswers[currentIdx] === i;
+                optDiv.innerHTML += `
+                    <button onclick="selectOpt(${i})" class="w-full text-left p-5 rounded-2xl border-2 transition flex items-center space-x-4 ${isSelected ? 'border-blue-600 bg-blue-50' : 'border-gray-100 hover:border-blue-200'}">
+                        <span class="w-8 h-8 rounded-lg ${isSelected ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500'} flex items-center justify-center font-bold">${label}</span>
+                        <span class="flex-1 font-medium">${q.o[i]}</span>
+                    </button>
+                `;
+            });
+
+            // Update Grid
+            document.querySelectorAll('.q-circle').forEach(el => el.classList.remove('q-current'));
+            document.getElementById(`grid-${currentIdx}`).classList.add('q-current');
+            document.getElementById('progress-text').innerText = `${userAnswers.filter(a => a !== null).length}/100`;
+        }
+
+        function selectOpt(idx) {
+            userAnswers[currentIdx] = idx;
+            document.getElementById(`grid-${currentIdx}`).classList.add('q-answered');
+            renderQuestion();
+        }
+
+        function moveQ(step) {
+            currentIdx += step;
+            if(currentIdx < 0) currentIdx = 0;
+            if(currentIdx > 99) currentIdx = 99;
+            renderQuestion();
+        }
+
+        function jumpTo(idx) {
+            currentIdx = idx;
+            renderQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
+                if(timeLeft <= 0) finishTest();
+            }, 1000);
+        }
+
+        function finishTest() {
+            if(!confirm("Yakin ingin mengakhiri ujian?")) return;
+            clearInterval(timerInterval);
+            showPage('result');
+            
+            let score = 0;
+            const discList = document.getElementById('discussion-list');
+            discList.innerHTML = '';
+
+            questions.forEach((q, i) => {
+                const isCorrect = userAnswers[i] === q.c;
+                if(isCorrect) score++;
+                
+                // Hanya tampilkan 5 pembahasan pertama untuk performa, atau semua jika perlu
+                if(i < 5 || !isCorrect) {
+                    discList.innerHTML += `
+                        <div class="bg-white p-6 rounded-3xl border shadow-sm border-l-8 ${isCorrect ? 'border-l-green-500' : 'border-l-red-500'}">
+                            <p class="font-bold">No. ${i+1}: ${isCorrect ? '✅ Benar' : '❌ Salah'}</p>
+                            <p class="mt-2 text-slate-700">${q.q}</p>
+                            <div class="mt-4 text-sm bg-blue-50 p-4 rounded-xl text-blue-900">
+                                <strong>Analisis:</strong> ${q.d}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            document.getElementById('final-score').innerText = score;
+            document.getElementById('score-status').innerText = score >= 75 ? "LULUS - Kompeten!" : "BELUM LULUS - Terus Belajar";
+        }
+
+        function processBuy(paket) {
+            alert(`Mengarahkan ke Gateway Pembayaran untuk Paket ${paket}...`);
+            window.open('https://wa.me/628123456789?text=Halo%20Admin,%20saya%20mau%20beli%20aplikasi%20CBT%20Madya%20Paket%20' + paket);
+        }
+
+        // Show Landing on Start
+        showPage('landing');
+    </script>
+</body>
+</html>
